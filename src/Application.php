@@ -3,6 +3,7 @@
 namespace VehiclePark;
 
 use Exception;
+use VehiclePark\Renderable\Renderable;
 use VehiclePark\Vehicle\Car;
 use VehiclePark\Vehicle\Motobike;
 use VehiclePark\VehiclePark\VehiclePark;
@@ -26,7 +27,6 @@ class Application
             "fuelType" => "diesel",
             "numberOfWheels" => 4
         ]);
-
         $motobike = new Motobike([
             "id" => "541445",
             "brand" => "Yamaha",
@@ -38,21 +38,10 @@ class Application
             "travelTime" => 4.5,
             "distance" => 100
         ]);
-
-        echo $motobike->speedCalculation();
         $vehiclePark01 = new VehiclePark();
         $vehiclePark01->addVehicle($car)->addVehicle($motobike);
-        ?>
-        <pre>
-            <?php
-            var_dump($vehiclePark01);
-            ?>
-        </pre>
-        <?php
-        echo $car->consumedFuelPrice(). "<br>";
-        echo $motobike->consumedFuelPrice(). "<br>";
-        echo $vehiclePark01->averageFuelPriceCalculation(). "<br>";
-        echo $vehiclePark01->averageSpeedCalculation(). "<br>";
+        $displayData = new Renderable();
+        $displayData->render($vehiclePark01);
 
     }
 }

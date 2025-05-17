@@ -69,10 +69,10 @@ trait CarMotobike
         }
         $consumedFuel = (self::$consumedFuelPer100 * $this->getDistance()) / 100;
         if ($this->getFuelType() === 'gasoline') {
-            return $consumedFuel * 195;
+            return round($consumedFuel * 195, 2);
         }
         if ($this->getFuelType() === 'diesel') {
-            return $consumedFuel * 205;
+            return round($consumedFuel * 205, 2);
         }
     }
 

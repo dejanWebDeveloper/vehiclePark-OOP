@@ -26,7 +26,7 @@ class VehiclePark
         foreach ($this->vehicles as $vehicle) {
             $fullSpeed += $vehicle->speedCalculation();
         }
-        return $fullSpeed / count($this->vehicles);
+        return round($fullSpeed / count($this->vehicles), 2);
     }
     public function averageFuelPriceCalculation(): float|int
     {
@@ -34,7 +34,7 @@ class VehiclePark
         foreach ($this->vehicles as $vehicle) {
             $fullFuelPrice += $vehicle->consumedFuelPrice();
         }
-        return $fullFuelPrice / count($this->vehicles);
+        return $fullFuelPrice;
     }
     public function __construct()
     {

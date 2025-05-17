@@ -144,7 +144,7 @@ abstract class Vehicle
     //speed calculation for different types of vehicles
     public function speedCalculation(): float|int
     {
-        return $this->distance / $this->travelTime;
+        return round($this->getDistance() / $this->getTravelTime(), 2);
     }
     /**
      * @throws Exception
