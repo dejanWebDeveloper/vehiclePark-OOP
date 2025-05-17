@@ -32,7 +32,12 @@ class VehiclePark
     {
         $fullFuelPrice = 0;
         foreach ($this->vehicles as $vehicle) {
-            $fullFuelPrice += $vehicle->consumedFuelPrice();
+            if (method_exists($vehicle, 'consumedFuelPrice')) {
+                $fullFuelPrice += $vehicle->consumedFuelPrice();
+            }else{
+                $fullFuelPrice += 0;
+            }
+
         }
         return $fullFuelPrice;
     }

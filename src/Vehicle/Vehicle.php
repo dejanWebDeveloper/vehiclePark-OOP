@@ -10,7 +10,6 @@ abstract class Vehicle
     protected string $brand;
     protected string $model;
     protected int $yearOfManufacture;
-    protected int $numberOfWheels;
     protected float $travelTime;
     protected int $distance;
 
@@ -93,24 +92,6 @@ abstract class Vehicle
         }
         $this->yearOfManufacture = $yearOfManufacture;
     }
-    /**
-     * @return int
-     */
-    public function getNumberOfWheels(): int
-    {
-        return $this->numberOfWheels;
-    }
-    /**
-     * @param int $numberOfWheels
-     * @throws Exception
-     */
-    public function setNumberOfWheels(int $numberOfWheels): void
-    {
-        if ($numberOfWheels < 0 || $numberOfWheels > 4){
-            throw new Exception("Vehicle number of wheels must be between 1 and 4");
-        }
-        $this->numberOfWheels = $numberOfWheels;
-    }
     public function getTravelTime(): float
     {
         return $this->travelTime;
@@ -162,9 +143,6 @@ abstract class Vehicle
         }
         if (isset($dataOfVehicle['yearOfManufacture'])) {
             $this->setYearOfManufacture($dataOfVehicle['yearOfManufacture']);
-        }
-        if (isset($dataOfVehicle['numberOfWheels'])) {
-            $this->setNumberOfWheels($dataOfVehicle['numberOfWheels']);
         }
         if (isset($dataOfVehicle['travelTime'])) {
             $this->setTravelTime($dataOfVehicle['travelTime']);

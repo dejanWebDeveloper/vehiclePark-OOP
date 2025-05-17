@@ -4,6 +4,7 @@ namespace VehiclePark;
 
 use Exception;
 use VehiclePark\Renderable\Renderable;
+use VehiclePark\Vehicle\Bike;
 use VehiclePark\Vehicle\Car;
 use VehiclePark\Vehicle\Motobike;
 use VehiclePark\VehiclePark\VehiclePark;
@@ -25,7 +26,6 @@ class Application
             "travelTime" => 220,
             "distance" => 120,
             "fuelType" => "diesel",
-            "numberOfWheels" => 4
         ]);
         $motobike = new Motobike([
             "id" => "541445",
@@ -34,14 +34,25 @@ class Application
             "yearOfManufacture" => 2022,
             "engine" => 750,
             "fuelType" => "gasoline",
-            "numberOfWheels" => 2,
+            "travelTime" => 4.5,
+            "distance" => 100
+        ]);
+        $bike = new Bike([
+            "id" => "541445",
+            "brand" => "Yamaha",
+            "model" => "ff155",
+            "yearOfManufacture" => 2022,
+            "engine" => "",
+            "fuelType" => "",
             "travelTime" => 4.5,
             "distance" => 100
         ]);
         $vehiclePark01 = new VehiclePark();
-        $vehiclePark01->addVehicle($car)->addVehicle($motobike);
+        $vehiclePark01->addVehicle($car)->addVehicle($motobike)->addVehicle($bike);
         $displayData = new Renderable();
+        //////////////////////////////////////
         $displayData->render($vehiclePark01);
+        //////////////////////////////////////
 
     }
 }

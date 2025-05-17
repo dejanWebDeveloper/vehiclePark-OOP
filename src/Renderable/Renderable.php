@@ -9,10 +9,8 @@ class Renderable implements RenderableInterface
     public function getHtml($vehicleData): string
     {
         ob_start();
+        include 'BootstrapLink.php';
         ?>
-        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css"
-              integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
-              crossorigin="anonymous">
         <table class="table text-center">
             <thead class="thead-dark">
             <tr>
@@ -39,11 +37,31 @@ class Renderable implements RenderableInterface
                     <td><?php echo $vehicle->getBrand(); ?></td>
                     <td><?php echo $vehicle->getModel(); ?></td>
                     <td><?php echo $vehicle->getYearOfManufacture(); ?></td>
-                    <td><?php echo $vehicle->getEngine(); ?></td>
-                    <td><?php echo $vehicle->getFuelType(); ?></td>
+                    <td><?php
+                        if (method_exists($vehicle, 'getEngine')) {
+                            echo $vehicle->getEngine();
+                        } else {
+                            echo '-';
+                        }
+                    ?></td>
+                    <td><?php
+                        if (method_exists($vehicle, 'getFuelType')) {
+                            echo $vehicle->getFuelType();
+                        } else {
+                            echo '-';
+                        }
+                        ?>
+                    </td>
                     <td><?php echo $vehicle->getTravelTime(); ?></td>
                     <td><?php echo $vehicle->getDistance(); ?></td>
-                    <td><?php echo $vehicle->consumedFuelPrice(); ?></td>
+                    <td><?php
+                        if (method_exists($vehicle, 'consumedFuelPrice')) {
+                            echo $vehicle->consumedFuelPrice();
+                        } else {
+                            echo '-';
+                        }
+                        ?>
+                    </td>
                     <td><?php echo $vehicle->speedCalculation(); ?></td>
                 </tr>
             <?php } ?>
