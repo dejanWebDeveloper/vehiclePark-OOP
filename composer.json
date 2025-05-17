@@ -1,0 +1,15 @@
+{
+    "name": "dejan/vehicle-park-home-work",
+    "authors": [
+        {
+            "name": "Dejan",
+            "email": "dejan_web@outlook.com"
+        }
+    ],
+    "require": {},
+    "autoload": {
+        "psr-4": {
+            "VehiclePark\\": "src\\"
+        }
+    }
+}
