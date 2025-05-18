@@ -1,9 +1,8 @@
 <?php
 namespace VehiclePark\Interface;
-interface CalculationMethods
+interface CalculationFuel
 {
     public function consumedFuelPrice();
-    public function speedCalculation();
 
 }
 

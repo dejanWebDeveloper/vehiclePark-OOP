@@ -3,12 +3,15 @@
 namespace VehiclePark\Vehicle;
 
 use Exception;
+use VehiclePark\Color\Color;
+use VehiclePark\Interface\CalculationSpeed;
 
-abstract class Vehicle
+abstract class Vehicle implements CalculationSpeed
 {
     protected string $id;
     protected string $brand;
     protected string $model;
+    protected object $color;
     protected int $yearOfManufacture;
     protected float $travelTime;
     protected int $distance;
@@ -71,6 +74,16 @@ abstract class Vehicle
             throw new Exception("Vehicle model name cannot be empty");
         }
         $this->model = $model;
+    }
+
+    public function getColor(): object
+    {
+        return $this->color;
+    }
+
+    public function setColor(Color $color): void
+    {
+        $this->color = $color;
     }
 
     /**
@@ -140,6 +153,9 @@ abstract class Vehicle
         }
         if (isset($dataOfVehicle['model'])) {
             $this->setModel($dataOfVehicle['model']);
+        }
+        if (isset($dataOfVehicle['color'])) {
+            $this->setColor($dataOfVehicle['color']);
         }
         if (isset($dataOfVehicle['yearOfManufacture'])) {
             $this->setYearOfManufacture($dataOfVehicle['yearOfManufacture']);

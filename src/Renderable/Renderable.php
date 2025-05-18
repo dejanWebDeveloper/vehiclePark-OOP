@@ -18,6 +18,7 @@ class Renderable implements RenderableInterface
                 <th scope="col">id</th>
                 <th scope="col">Brand</th>
                 <th scope="col">Model</th>
+                <th scope="col">Color</th>
                 <th scope="col">Year Of Manufacture</th>
                 <th scope="col">Engine (cm3)</th>
                 <th scope="col">Fuel Type</th>
@@ -36,6 +37,7 @@ class Renderable implements RenderableInterface
                     <td><?php echo $vehicle->getId(); ?></td>
                     <td><?php echo $vehicle->getBrand(); ?></td>
                     <td><?php echo $vehicle->getModel(); ?></td>
+                    <td><?php echo $vehicle->getColor()->getColorName(); ?></td>
                     <td><?php echo $vehicle->getYearOfManufacture(); ?></td>
                     <td><?php
                         if (method_exists($vehicle, 'getEngine')) {
@@ -52,17 +54,17 @@ class Renderable implements RenderableInterface
                         }
                         ?>
                     </td>
-                    <td><?php echo $vehicle->getTravelTime(); ?></td>
-                    <td><?php echo $vehicle->getDistance(); ?></td>
+                    <td><?php echo $vehicle->getTravelTime(). " h"; ?></td>
+                    <td><?php echo $vehicle->getDistance(). " km"; ?></td>
                     <td><?php
                         if (method_exists($vehicle, 'consumedFuelPrice')) {
-                            echo $vehicle->consumedFuelPrice();
+                            echo $vehicle->consumedFuelPrice(). " RSD";
                         } else {
                             echo '-';
                         }
                         ?>
                     </td>
-                    <td><?php echo $vehicle->speedCalculation(); ?></td>
+                    <td><?php echo $vehicle->speedCalculation(). " km/h"; ?></td>
                 </tr>
             <?php } ?>
             </tbody>
@@ -71,13 +73,13 @@ class Renderable implements RenderableInterface
             <thead class="thead-dark">
             <tr>
                 <th scope="col">Average Speed of all vehicles</th>
-                <th scope="col">Average Fuel Price of all vehicles</th>
+                <th scope="col">Total Fuel Price of all vehicles</th>
             </tr>
             </thead>
             <tbody>
                 <tr>
-                    <td><?php echo $vehicleData->averageSpeedCalculation() ?></td>
-                    <td><?php echo $vehicleData->averageFuelPriceCalculation() ?></td>
+                    <td><?php echo $vehicleData->averageSpeedCalculation(). " km/h" ?></td>
+                    <td><?php echo $vehicleData->averageFuelPriceCalculation(). " RSD" ?></td>
                 </tr>
             </tbody>
         </table>
