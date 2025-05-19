@@ -4,10 +4,15 @@ namespace VehiclePark\Util;
 
 use Exception;
 
+/**
+ * trait u kome sam definisao sve dodatne funkcionalnosti potrebne za klase Car i MotoBike
+ */
 trait CarMotobike
 {
     protected int $engine;
     protected string $fuelType;
+    //staticki atribut koja mi koristi da izracunam prosecnu potrosnju na 100km koju dalje koristim za obracun ukuone
+    // cene goriva za to vozilo
     protected static int $consumedFuelPer100;
     /**
      * @return int
@@ -16,7 +21,6 @@ trait CarMotobike
     {
         return $this->engine;
     }
-
     /**
      * @param int $engine
      * @throws Exception
@@ -28,7 +32,6 @@ trait CarMotobike
         }
         $this->engine = $engine;
     }
-
     /**
      * @return string
      */
@@ -36,13 +39,13 @@ trait CarMotobike
     {
         return $this->fuelType;
     }
-
     /**
      * @param string $fuelType
      * @throws Exception
      */
     public function setFuelType(string $fuelType): void
     {
+        //naveo sam u niz koje su sve moguce vrednosti za gorivo i na osnovu toga izvrsio validaciju
         $possibleFuelType = array(
             'gasoline',
             'diesel'
@@ -52,7 +55,14 @@ trait CarMotobike
         }
         $this->fuelType = $fuelType;
     }
-
+    /**
+     * metoda za obracun cene goriva gde sam na osnovu zapremine motora definisao prosecnu potrosnju goriva za vozilo
+     * i onda na osnovu prosecne potrosnje i predjene distance racunao ukupnu cenu potrosnje goriva gde sam proizvoljno uneo
+     * cenu goriva po L
+     * Na osnovu ove metode, stvarna primena bi mogla da bude da svaki vozac na kraju dana dobije izvestaj, trebao si na osnovu predjenih km
+     * i prosecne potrosnje da ukupno potrosis odredjenu kolicinu novca, a ti si potrosio vise ili manje i na osnovu toga
+     * da odredjene radnike dodatno nagradimo jer su ekonomicni vozaci.
+     */
     public function consumedFuelPrice()
     {
         if ($this->engine < 600) {
@@ -75,7 +85,6 @@ trait CarMotobike
             return round($consumedFuel * 205, 2);
         }
     }
-
     public function __construct(array $dataOfVehicle = [])
     {
         parent::__construct($dataOfVehicle);

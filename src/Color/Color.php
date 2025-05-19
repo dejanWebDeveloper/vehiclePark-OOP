@@ -1,6 +1,8 @@
 <?php
 namespace VehiclePark\Color;
 
+use Exception;
+//napravio sam posebnu klasu koja ce instancirati boje vozila
 class Color
 {
     protected int $id;
@@ -11,8 +13,14 @@ class Color
         return $this->id;
     }
 
+    /**
+     * @throws Exception
+     */
     public function setId(int $id): void
     {
+        if (!is_numeric($id)){
+            throw new Exception("id must be numeric");
+        }
         $this->id = $id;
     }
 
@@ -21,10 +29,22 @@ class Color
         return $this->colorName;
     }
 
+    /**
+     * @throws Exception
+     */
     public function setColorName(string $colorName): void
     {
+        //izvrsio sam validaciju koje boje se mogu uzeti u obzir kao vrednost
+        $avaliableColor = ['red', 'green', 'blue', 'yellow', 'black', 'white', 'aqua'];
+        if (!in_array($colorName, $avaliableColor)) {
+            throw new Exception('Color '.$colorName.' is not avaliable');
+        }
         $this->colorName = $colorName;
     }
+
+    /**
+     * @throws Exception
+     */
     public function __construct(array $dataColor = [])
     {
         if (isset($dataColor['id'])) {

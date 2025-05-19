@@ -6,8 +6,12 @@ use Exception;
 use VehiclePark\Color\Color;
 use VehiclePark\Interface\CalculationSpeed;
 
+/**
+ * apstraktna klasa u kojoj sam definisao sve atribute i metode koji su zajednicki za sva vozila i implementira interfase gde se cuva metoda za proracun brzine
+ */
 abstract class Vehicle implements CalculationSpeed
 {
+    //definisao sam atribute po izboru i definisao im koji su tip podatka
     protected string $id;
     protected string $brand;
     protected string $model;
@@ -15,7 +19,7 @@ abstract class Vehicle implements CalculationSpeed
     protected int $yearOfManufacture;
     protected float $travelTime;
     protected int $distance;
-
+    //generisao sam metode getter i setter za sve atribute i odradio odredjene validacije prilikom njihovog setovanja
     /**
      * @return string
      */
@@ -23,7 +27,6 @@ abstract class Vehicle implements CalculationSpeed
     {
         return $this->id;
     }
-
     /**
      * @param string $id
      * @throws Exception
@@ -35,7 +38,6 @@ abstract class Vehicle implements CalculationSpeed
         }
         $this->id = $id;
     }
-
     /**
      * @return string
      */
@@ -43,7 +45,6 @@ abstract class Vehicle implements CalculationSpeed
     {
         return $this->brand;
     }
-
     /**
      * @param string $brand
      * @throws Exception
@@ -55,7 +56,6 @@ abstract class Vehicle implements CalculationSpeed
         }
         $this->brand = $brand;
     }
-
     /**
      * @return string
      */
@@ -75,17 +75,15 @@ abstract class Vehicle implements CalculationSpeed
         }
         $this->model = $model;
     }
-
     public function getColor(): object
     {
         return $this->color;
     }
-
+    //odradio sam validaciju da $color mora biti instanca klase Color
     public function setColor(Color $color): void
     {
         $this->color = $color;
     }
-
     /**
      * @return int
      */
@@ -93,10 +91,10 @@ abstract class Vehicle implements CalculationSpeed
     {
         return $this->yearOfManufacture;
     }
-
     /**
      * @param int $yearOfManufacture
      * @throws Exception
+     * validirao sam da godiste mora biti izmedju 2000 i 2025 cime sam ujedno postigao da mora unos biti cetvorocifren
      */
     public function setYearOfManufacture(int $yearOfManufacture): void
     {
@@ -109,9 +107,9 @@ abstract class Vehicle implements CalculationSpeed
     {
         return $this->travelTime;
     }
-
     /**
      * @throws Exception
+     * travelTime ima float vrednost koja predstavlja sate provedene u prevozenju
      */
     public function setTravelTime(float $travelTime): void
     {
@@ -124,7 +122,6 @@ abstract class Vehicle implements CalculationSpeed
     {
         return $this->distance;
     }
-
     /**
      * @throws Exception
      */
@@ -135,7 +132,7 @@ abstract class Vehicle implements CalculationSpeed
         }
         $this->distance = $distance;
     }
-    //speed calculation for different types of vehicles
+    //metoda za prosto izracunavanje brzine deljenjem predjenog puta kroz vreme
     public function speedCalculation(): float|int
     {
         return round($this->getDistance() / $this->getTravelTime(), 2);
