@@ -3,8 +3,8 @@
 namespace VehiclePark\VehiclePark;
 
 use Exception;
-use VehiclePark\Interface\CalculationFuel;
-use VehiclePark\Interface\CalculationSpeed;
+use VehiclePark\Interfaces\CalculationFuel;
+use VehiclePark\Interfaces\CalculationSpeed;
 use VehiclePark\Vehicle\Bike;
 use VehiclePark\Vehicle\Car;
 use VehiclePark\Vehicle\Motobike;

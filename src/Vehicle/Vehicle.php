@@ -4,7 +4,7 @@ namespace VehiclePark\Vehicle;
 
 use Exception;
 use VehiclePark\Color\Color;
-use VehiclePark\Interface\CalculationSpeed;
+use VehiclePark\Interfaces\CalculationSpeed;
 
 /**
  * apstraktna klasa u kojoj sam definisao sve atribute i metode koji su zajednicki za sva vozila i implementira interfase gde se cuva metoda za proracun brzine

@@ -2,7 +2,7 @@
 
 namespace VehiclePark\Vehicle;
 
-use VehiclePark\Interface\CalculationFuel;
+use VehiclePark\Interfaces\CalculationFuel;
 use VehiclePark\Util\CarMotobike;
 
 /**

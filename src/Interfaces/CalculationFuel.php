@@ -1,5 +1,5 @@
 <?php
-namespace VehiclePark\Interface;
+namespace VehiclePark\Interfaces;
 interface CalculationFuel
 {
     public function consumedFuelPrice();

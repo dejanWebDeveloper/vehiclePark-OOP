@@ -1,5 +1,5 @@
 <?php
-namespace VehiclePark\Interface;
+namespace VehiclePark\Interfaces;
 interface RenderableInterface
 {
     public function getHtml($vehicleData);

@@ -2,7 +2,7 @@
 
 namespace VehiclePark\Renderable;
 
-use VehiclePark\Interface\RenderableInterface;
+use VehiclePark\Interfaces\RenderableInterface;
 
 class Renderable implements RenderableInterface
 {

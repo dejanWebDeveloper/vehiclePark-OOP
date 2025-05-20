@@ -1,5 +1,5 @@
 <?php
-namespace VehiclePark\Interface;
+namespace VehiclePark\Interfaces;
 interface CalculationSpeed
 {
     public function speedCalculation();
